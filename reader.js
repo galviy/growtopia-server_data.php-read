@@ -15,7 +15,7 @@ log4js.configure({
   }
 });
 
-console.log('Growtopia/serve_data.php reader coded by GalvinID credit to Clayne (C)')
+console.log('server_data.php reader coded by GalvinID credit to Clayne (C)')
 readline.question('Target IP : ', ip => {
     request.post(`http://${ip}/growtopia/server_data.php`, function(err, response, body) {
     data.info(`${response && response.statusCode}\n${body}`)//saved in /logs (auto save)
