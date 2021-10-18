@@ -2,8 +2,7 @@
 this simple tools can read ```growtopia/server_data.php``` of growtopia server 
 
 # Instalation
-```npm install log4js```
-```npm install request```
+```npm install node-fetch```
 # How to use
 ```node reader.js```
 
