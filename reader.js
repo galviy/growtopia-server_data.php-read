@@ -4,8 +4,8 @@ const readline = require('readline').createInterface({
     output: process.stdout
 });
 
-const packet1 = ["growtopia1.com", 'growtopia2.com'];
-const packet2 = ['37', '38'];
+const packet1 = ["growtopia1.com", "growtopia2.com"];
+const packet2 = ["37", "38"];
 
 
 function main() {
