@@ -5,12 +5,12 @@ const readline = require('readline').createInterface({
 });
 
 const packet1 = ["growtopia1.com", 'growtopia2.com'];
-const packet2 = ['38', '37'];
+const packet2 = ['37', '38'];
 
 
 function main() {
-	const host = packet1[Math.floor(Math.random() * packet1.length)];
-	const contentlength = packet2[Math.floor(Math.random() * packet2.length)];
+    const host = packet1[Math.floor(Math.random() * packet1.length)];
+    const contentlength = packet2[Math.floor(Math.random() * packet2.length)];
     readline.question('Growtopia/server_data.php reader (c) Galvin\nIP Address : ', ip => {
         fetch("http://" + ip + "/growtopia/server_data.php", {
             method: "POST",
