@@ -1,26 +1,38 @@
-let request = require('request');
-const log4js = require('log4js')
-const data = log4js.getLogger('data');
+const fetch = require('node-fetch');
 const readline = require('readline').createInterface({
-  input: process.stdin,
-  output: process.stdout
+    input: process.stdin,
+    output: process.stdout
 });
 
-log4js.configure({
-  appenders: {
-    multi: { type: 'multiFile', base: 'logs/', property: 'categoryName', extension: '.html' }
-  },
-  categories: {
-    default: { appenders: [ 'multi' ], level: 'debug' }
-  }
-});
+const packet1 = ["growtopia1.com", 'growtopia2.com'];
+const packet2 = ['38', '37'];
 
-console.log('Growtopia/serve_data.php reader coded by GalvinID credit to Clayne (C)')
-readline.question('Target IP : ', ip => {
-    request.post(`http://${ip}/growtopia/server_data.php`, function(err, response, body) {
-    data.info(`${response && response.statusCode}\n${body}`)//saved in /logs (auto save)
-	console.log(`${response && response.statusCode}\n${body}`)//will shown in terminal
-	console.log('html/css copied successfully')
-    readline.close();
-  });
-})
+
+function main() {
+	const host = packet1[Math.floor(Math.random() * packet1.length)];
+	const contentlength = packet2[Math.floor(Math.random() * packet2.length)];
+    readline.question('Growtopia/server_data.php reader (c) Galvin\nIP Address : ', ip => {
+        fetch("http://" + ip + "/growtopia/server_data.php", {
+            method: "POST",
+            headers: {
+                "Accept": "*/*",
+                "Host": host,
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Length": contentlength,
+                "user-agent": ""
+            },
+            body: 'version=3%2E71&platform=0&protocol=146'
+        }).then(data => data.text()).then(response => {
+            console.log(response)
+        })
+    })
+}
+
+function execute() {
+    try {
+        main()
+    } catch (error) {
+        return console.log(error);
+    }
+}
+execute()
